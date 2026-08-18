@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محلل أمان كلمات المرور والتشفير</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1><i class="fa-solid fa-shield-halved"></i> محلل أمان كلمات المرور</h1>
+      <p>فحص الـ Entropy، تقدير زمن الكسر، وتوليد الهاش الأمني لحظياً</p>
+    </header>
+
+    <!-- حقل الإدخال -->
+    <div class="input-box">
+      <div class="password-wrapper">
+        <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور للفحص..." autocomplete="off">
+        <button id="toggleVisibility" type="button"><i class="fa-solid fa-eye"></i></button>
+      </div>
+      <div class="action-buttons">
+        <button id="generateBtn"><i class="fa-solid fa-dice"></i> توليد كلمة قوية</button>
+        <button id="copyBtn"><i class="fa-regular fa-copy"></i> نسخ</button>
+      </div>
+    </div>
+
+    <!-- شريط القوة ومقاييس الأمان -->
+    <div class="card strength-card">
+      <div class="strength-header">
+        <span>مستوى القوة: <strong id="strengthLabel">فارغ</strong></span>
+        <span id="entropyValue">الإنتروبي: 0 Bits</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div id="progressBar" class="progress-bar-fill"></div>
+      </div>
+      <div class="crack-time">
+        <i class="fa-solid fa-stopwatch"></i> الوقت التقديري للاختراق بـ Brute-Force: <strong id="crackTimeValue">0 ثانية</strong>
+      </div>
+    </div>
+
+    <!-- قائمة المعايير والشروط -->
+    <div class="card criteria-card">
+      <h3>المعايير الأمنية:</h3>
+      <ul class="criteria-list">
+        <li id="rule-length"><i class="fa-solid fa-circle-xmark"></i> الطول لا يقل عن 12 خانة</li>
+        <li id="rule-uppercase"><i class="fa-solid fa-circle-xmark"></i> أحرف إنجليزية كبيرة (A-Z)</li>
+        <li id="rule-lowercase"><i class="fa-solid fa-circle-xmark"></i> أحرف إنجليزية صغيرة (a-z)</li>
+        <li id="rule-numbers"><i class="fa-solid fa-circle-xmark"></i> أرقام (0-9)</li>
+        <li id="rule-symbols"><i class="fa-solid fa-circle-xmark"></i> رموز خاصة (!@#$%^&*)</li>
+        <li id="rule-common"><i class="fa-solid fa-circle-check"></i> ليست من الكلمات الشائعة/المكررة</li>
+      </ul>
+    </div>
+
+    <!-- التشفير والهاشات -->
+    <div class="card hash-card">
+      <h3><i class="fa-solid fa-fingerprint"></i> الهاشات الأمنية (Crypto Hash):</h3>
+      <div class="hash-group">
+        <label>SHA-256 (Web Crypto API):</label>
+        <div class="hash-result" id="sha256Hash">-</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
